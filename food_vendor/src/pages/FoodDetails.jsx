@@ -7,7 +7,7 @@ function FoodDetails() {
  
   return (
      
-    <div className="bg-yellow-50/55 min-h-screen text-white px-32 ">
+    <div className="bg-yellow-50/55 min-h-screen text-white px-10 md:px-32 ">
       <div>
         <NavBar></NavBar>
         <div>
@@ -44,7 +44,7 @@ function FoodDetails() {
             </a>
           </div>
 
-          <div className="grid grid-cols-2 gap-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-24">
             <div className="mt-6">
               <a className="text-black font-bold text-xl">Ingredients</a>
               <div>
