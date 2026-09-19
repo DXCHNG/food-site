@@ -15,21 +15,21 @@ function HomePage(){
     <div className="bg-yellow-50/55 min-h-screen text-white">
     <NavBar value={inputSearch} onChange={setInputSearch} onSubmit={(query) => {navigate(`/meal/${encodeURIComponent(query)}`)}} ></NavBar>
    
-    <div className="flex flex-col items-center gap-4 py-10 bg-white/50">
+    <div className="flex flex-col justify-items-center items-center justify-center gap-4 py-10 bg-white/50 text-center">
       <a className="text-orange-500/85 font-bold ">Refiner Tech Academy — Solo Project</a>
-      <a className="text-black font-bold text-4xl">Find your next <a className="text-orange-500/85 font-bold text-4xl"> favourite meal</a></a>
-      <a className="text-black/70 mb-4">Search thousands of recipes from around the world. Save the ones you love.</a>
+      <a className="text-black font-bold text-4xl">Find your next <span className="text-orange-500/85 font-bold text-3xl md:text-4xl"> favourite meal</span></a>
+      <a className="text-black/70 mb-4 max-w-xl">Search thousands of recipes from around the world. Save the ones you love.</a>
       <div className="flex flex-row gap-3">
       <input onChange={(newSearch) => setButtonSearch(newSearch.target.value)} placeholder="Try 'pasta' or 'curry'..." className="border rounded-xl w-60 text-black"></input>
       <button onClick={() => navigate(`/meal/${encodeURIComponent(buttonSearch)}`)} className="bg-orange-500/85 text-white font-bold px-3 py-2 w-20 border rounded-xl">Search</button>
       </div>
     </div>
-    <div className="flex flex-col px-28">
+   
       <div>
-      <a className="text-black font-bold text-2xl">Browse by category</a>
+      <a className="text-black font-bold text-2xl flex flex-col px-10 md:px-28">Browse by category</a>
       </div>
-    </div>
-    <div className="flex flex-wrap text-black/70 gap-4 py-6 px-28">
+   
+    <div className="flex flex-wrap text-black/70 gap-2 md:gap-4 py-6 px-10 md:px-28">
     
     <button onClick={() => setCategory(`Beef`)}
      className="border rounded-3xl w-20 px-5 py-1 bg-white hover:border-orange-500/85 active:bg-orange-500/85">Beef</button>
@@ -48,7 +48,7 @@ function HomePage(){
     <button onClick={() =>setCategory(`Seafood`)}
      className="border rounded-3xl w-26 px-5 py-1 bg-white hover:border-orange-500/85">Seafood</button>
     </div>
-    <div className="grid grid-cols-5 gap-7 px-28"> 
+    <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-7 px-10 md:px-28"> 
     {!loading && !error && data?.meals? (
       data.meals.map((food) => <Recipes key={food.idMeal} food={food}></Recipes>)
     

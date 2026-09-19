@@ -5,11 +5,11 @@ function NavBar({onChange, value, onSubmit}) {
   const navigate = useNavigate()
   return (
     <div>
-      <nav className="flex flex-row gap-12 px-6 py-4 bg-yellow-100/30 items-center justify-center  ">
-        <div className="flex flex-row gap-3">
+      <nav className="flex flex-row gap-3 md:gap-5 lg:gap-12  px-6 py-4 bg-yellow-100/30 items-center justify-center  ">
+        <div className="flex flex-row  ">
           <a></a>
 
-          <button onClick={() => navigate(`/`)} className="text-orange-500/85 font-bold text-2xl"> 🍴 Forkful</button>
+          <button onClick={() => navigate(`/`)} className=" text-orange-500/85 font-bold text-2xl "> 🍴 Forkful</button>
          
         </div>
         <form
@@ -22,12 +22,12 @@ function NavBar({onChange, value, onSubmit}) {
             value={value}
             onChange={(newSearch) => onChange(newSearch.target.value)}
             placeholder="Search recipes..."
-            className="text-black border rounded-xl w-56 px-4 py-1 border-orange-500/85"
+            className="text-black border rounded-xl w-24 md:w-56 px-4 py-1 border-orange-500/85"
           ></input>
         </form>
-        <div className="text-black/70 gap-3 flex flex-row">
+        <div className="text-black/70 gap-3 md:gap-2 sm:gap-1 flex flex-row">
           <button onClick={() => navigate(`/`)} className="text-black/70">Home</button>
-           <button onClick={() => navigate(`/`)} className="text-black/70">Favourites</button>
+           <button onClick={() => navigate(`/`)} className=" hidden md:block text-black/70">Favourites</button>
         </div>
       </nav>
     </div>
