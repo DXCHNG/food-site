@@ -1,15 +1,17 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
+import { useState } from "react";
 function FoodDetails() {
   const location = useLocation()
   const food = location.state
   const navigate = useNavigate()
+   const [inputSearch, setInputSearch] = useState("")
  
   return (
      
     <div className="bg-yellow-50/55 min-h-screen text-white px-10 md:px-32 ">
       <div>
-        <NavBar></NavBar>
+        <NavBar value={inputSearch} onChange={setInputSearch} onSubmit={(query) => {navigate(`/meal/${encodeURIComponent(query)}`)}} ></NavBar>
         <div>
         <button
             onClick={() => navigate(-1)}
@@ -75,11 +77,27 @@ function FoodDetails() {
                 </div>
               </div>
             </div>
-            <div className="text-black  flex flex-col mt-6 gap-3">
+            <div className="text-black  flex flex-col mt-6 gap-3 text-justify ">
               <a className="text-xl font-bold">Instructions</a>
-              <a>
-                {food.strInstructions}
-              </a>
+              <div>
+  {food.strInstructions
+    .split(/\s(?=\d+\s+[A-Z])/)
+    .map((instruction, index) => {
+      const match = instruction.match(/^(\d+)\s+(.*)/s);
+
+      return (
+        <div key={index} className="mb-6">
+          <p className="leading-7">
+            <span className="font-bold mr-2 bg-orange-500 text-white border rounded-full">
+              {match ? `${match[1]}.` : `${index + 1}.`}
+            </span>
+
+            {match ? match[2].trim() : instruction.trim()}
+          </p>
+        </div>
+      );
+    })}
+</div>
             
               <button className="text-white bg-red-500 border rounded-lg px-2 py-2 w-52 font-bold">
                 
